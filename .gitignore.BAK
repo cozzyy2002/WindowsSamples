@@ -2,13 +2,17 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/tsm/v14
-/tsm.VC.VC.opendb
-/tsm.VC.db
+*.suo
+*.db
+*.opendb
 *.user
-/ipch
+v15/
+ipch/
 **/Release
 **/Debug
 *.log
 /Log.log.*
 *.aps
+*.BAK
+.gitignore.BAK
+/.vs

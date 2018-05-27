@@ -6,10 +6,13 @@
 *.db
 *.opendb
 *.user
-/ipch
+.vs/
+v15/
+ipch/
 **/Release
 **/Debug
 *.log
 /Log.log.*
 *.aps
 *.BAK
+.gitignore.BAK
