@@ -1,0 +1,14 @@
+################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/tsm/v14
+/tsm.VC.VC.opendb
+/tsm.VC.db
+*.user
+/ipch
+**/Release
+**/Debug
+*.log
+/Log.log.*
+*.aps
