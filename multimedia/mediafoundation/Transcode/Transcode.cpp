@@ -95,8 +95,10 @@ HRESULT CTranscoder::OpenFile(const WCHAR *sURL)
 //
 //-------------------------------------------------------------------
 
-HRESULT CTranscoder::ConfigureAudioOutput()
+HRESULT CTranscoder::ConfigureAudioOutput(LPCGUID subType)
 {
+	if(!subType) return S_OK;
+
     assert (m_pProfile);
 
     HRESULT hr = S_OK;
@@ -111,7 +113,7 @@ HRESULT CTranscoder::ConfigureAudioOutput()
     // audio encoder.
 
     hr = MFTranscodeGetAudioOutputAvailableTypes(
-        MFAudioFormat_WMAudioV9, 
+        *subType, 
         MFT_ENUM_FLAG_ALL, 
         NULL, 
         &pAvailableTypes
@@ -183,9 +185,11 @@ HRESULT CTranscoder::ConfigureAudioOutput()
 //
 //-------------------------------------------------------------------
 
-HRESULT CTranscoder::ConfigureVideoOutput()
+HRESULT CTranscoder::ConfigureVideoOutput(LPCGUID subType)
 {
-    assert (m_pProfile);
+	if(!subType) return S_OK;
+
+	assert (m_pProfile);
 
     HRESULT hr = S_OK;
 
@@ -251,8 +255,9 @@ HRESULT CTranscoder::ConfigureVideoOutput()
 //  stream settings stored in the transcode profile.
 //-------------------------------------------------------------------
 
-HRESULT CTranscoder::ConfigureContainer()
+HRESULT CTranscoder::ConfigureContainer(LPCGUID containerType)
 {
+	assert(containerType);
     assert (m_pProfile);
     
     HRESULT hr = S_OK;
@@ -267,7 +272,7 @@ HRESULT CTranscoder::ConfigureContainer()
     {
         hr = pContainerAttrs->SetGUID(
             MF_TRANSCODE_CONTAINERTYPE, 
-            MFTranscodeContainerType_ASF
+            *containerType
             );
     }
 

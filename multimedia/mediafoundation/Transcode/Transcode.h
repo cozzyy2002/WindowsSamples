@@ -41,9 +41,9 @@ public:
     virtual ~CTranscoder();
 
     HRESULT OpenFile(const WCHAR *sURL);
-    HRESULT ConfigureAudioOutput();
-    HRESULT ConfigureVideoOutput();
-    HRESULT ConfigureContainer();
+    HRESULT ConfigureAudioOutput(LPCGUID subType);
+    HRESULT ConfigureVideoOutput(LPCGUID subType);
+    HRESULT ConfigureContainer(LPCGUID conainerType);
     HRESULT EncodeToFile(const WCHAR *sURL);
 
 private:
